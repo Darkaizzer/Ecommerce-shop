@@ -6,7 +6,7 @@ import {CartContext} from "../contexts/CartContext"
 
 const CartItem = ({ item }) => {
   //удаление товара
-  const{removeFromCart}= useContext(CartContext)
+  const{removeFromCart,increaseAmout,decreaseAmout}= useContext(CartContext)
   //destructure item
   const { id, title, image, price, amount } = item;
   return (
@@ -33,13 +33,15 @@ const CartItem = ({ item }) => {
           <div className=" flex gap-x-2 h-[36px]">
             <div className=" flex flex-1 max-w-[100px] items-center h-full border text-primary font-medium">
               {/* {ninus icon} */}
-              <div className=" flex-1 flex justify-center items-center cursor-pointer">
+              <div onClick={() => decreaseAmout(id)} className=" flex-1 flex justify-center items-center 
+              cursor-pointer  h-fyll">
                  <IoMdRemove />
               </div>
               {/* {добовляем счетчик товара} */}
               <div className=" h-full flex justify-center items-center px-2">{ amount}</div>
             {/* {plus icon} */}
-              <div className=" flex-1 h-full flex justify-center items-center cursor-pointer">
+              <div onClick={() => increaseAmout(id)} className=" flex-1 h-full flex justify-center items-center 
+              cursor-pointer ">
                  <IoMdAdd />
               </div>
             </div>
